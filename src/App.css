@@ -40,3 +40,26 @@
 .read-the-docs {
   color: #888;
 }
+.allPosts {
+  padding: 1rem; /* p-4 */
+  text-align: left; /* text-left */
+  background-color: #fac5e2; /* bg-pink-50 (A very light pink) */
+  border: 1px solid #df7fb5; /* border border-pink-200 */
+  border-radius: 0.5rem; /* rounded-lg */
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1); /* shadow-md */
+  transition: box-shadow 300ms; /* transition-shadow duration-300 */
+}
+
+.allPosts:hover {
+  /* Slightly more pronounced shadow on hover */
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1); /* hover:shadow-lg */
+}
+.allComments {
+  padding: 1rem; /* p-4 */
+  text-align: left; /* text-left */
+  background-color: #fddbee; /* bg-pink-50 (A very light pink) */
+  border: 1px solid #eeb8d7; /* border border-pink-200 */
+  border-radius: 0.5rem; /* rounded-lg */
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1); /* shadow-md */
+  transition: box-shadow 300ms; /* transition-shadow duration-300 */
+}
