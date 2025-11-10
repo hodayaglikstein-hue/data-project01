@@ -1,10 +1,20 @@
+import { useEffect } from "react";
 import { useState } from "react";
+import { useNavigate } from "react-router";
 
 function Signup() {
   const [usernameValue, setUsernameValue] = useState("");
   const [passwordValue, setPasswordValue] = useState("");
   const [confirmPasswordValue, setConfirmPasswordValue] = useState("");
-  const [userCount, setUserCount] = useState(10);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (localStorage.getItem("currentUser")) {
+      navigate("/info", { replace: true });
+    }
+  }, [navigate]);
+
+  JSON.parse(localStorage.getItem("count")) || "10";
 
   function updateUsernameValue(e) {
     setUsernameValue(e.target.value);
@@ -40,8 +50,11 @@ function Signup() {
       const res = await fetch(`http://localhost:3000/users`, {
         method: "POST",
         body: JSON.stringify({
-          id: userCount + 1,
+          id: JSON.parse(localStorage.getItem("count")) + 1,
+          name: "",
           username: username,
+          email: "",
+          phone: "",
           website: password,
         }),
         headers: {
@@ -51,8 +64,16 @@ function Signup() {
       if (!res.ok) {
         throw Error("Something went wrong...");
       } else {
-        setUserCount((prev) => prev++);
+        localStorage.setItem(
+          "count",
+          JSON.parse(localStorage.getItem("count")) + 1
+        );
+        setUsernameValue("");
+        setPasswordValue("");
+        setConfirmPasswordValue("");
+        localStorage.setItem("currentUser", JSON.stringify(await res.json()));
         alert("success!");
+        navigate("/info");
       }
     } catch (e) {
       alert(e);

@@ -2,16 +2,24 @@ import { BrowserRouter, Link, Route, Routes } from "react-router";
 import "./App.css";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import Info from "./pages/Info";
+import MainLayout from "./components/MainLayout";
+import Logout from "./pages/Logout";
+import UpdateUser from "./components/UpdateUser";
 
 function App() {
   return (
     <>
       <BrowserRouter>
-        <Link to="/Login">Login</Link>
-
         <Routes>
-          <Route path="/Login" element={<Login />} />
-          <Route path="/Signup" element={<Signup />} />
+          <Route path="/" element={<Login />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/logout" element={<Logout />} />
+          <Route path="/updateuser" element={<UpdateUser />} />
+          <Route element={<MainLayout />}>
+            <Route path="/info" element={<Info />} />
+          </Route>
         </Routes>
       </BrowserRouter>
     </>

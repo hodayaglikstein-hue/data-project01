@@ -1,8 +1,17 @@
+import { useEffect } from "react";
 import { useState } from "react";
+import { useNavigate } from "react-router";
 
 function Login() {
   const [usernameValue, setUsernameValue] = useState("");
   const [passwordValue, setPasswordValue] = useState("");
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (localStorage.getItem("currentUser")) {
+      navigate("/info", { replace: true });
+    }
+  }, [navigate]);
 
   function updateUsernameValue(e) {
     setUsernameValue(e.target.value);
@@ -31,6 +40,7 @@ function Login() {
           setUsernameValue("");
           setPasswordValue("");
           alert("yay");
+          navigate("/info");
         } else {
           throw Error("Something is worng...");
         }
