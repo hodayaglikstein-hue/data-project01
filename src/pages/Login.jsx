@@ -39,7 +39,6 @@ function Login() {
           localStorage.setItem("currentUser", JSON.stringify(user[0]));
           setUsernameValue("");
           setPasswordValue("");
-          alert("yay");
           navigate("/info");
         } else {
           throw Error("Something is worng...");
@@ -69,6 +68,8 @@ function Login() {
         />
         <input type="submit" value={"Login"} />
       </form>
+      <h2>Create a new account: </h2>
+      <button onClick={() => navigate("/signup")}>SignUp</button>
     </>
   );
 }

@@ -126,6 +126,8 @@ function Signup() {
         />
         <input type="submit" value={"Signup"} />
       </form>
+      <h2>Already got an account: </h2>
+      <button onClick={() => navigate("/login")}>Login</button>
     </>
   );
 }
