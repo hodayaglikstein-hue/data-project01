@@ -10,7 +10,7 @@ function Signup() {
 
   useEffect(() => {
     if (localStorage.getItem("currentUser")) {
-      navigate("/info", { replace: true });
+      navigate("/home", { replace: true });
     }
   }, [navigate]);
 

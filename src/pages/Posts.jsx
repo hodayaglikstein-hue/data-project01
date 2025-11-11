@@ -11,16 +11,22 @@ function Posts() {
 
   const user = JSON.parse(localStorage.getItem("currentUser"));
 
-  const fetchPosts = (userid) => {
+  async function showPosts(userid) {
     setIsLoading(true);
-    fetch(`http://localhost:3000/posts?userid=${userid}`)
-      .then((response) => response.json())
-      .then((data) => setPosts(data))
-      .catch((err) => {
-        console.error("Failed to fetch posts:", err);
-        setIsLoading(false);
-      });
-  };
+    try {
+      const res = await fetch(`http://localhost:3000/posts?userid=${userid}`);
+      if (!res.ok) {
+        throw Error("Something went wrong!");
+      } else {
+        const data = await res.json();
+        setPosts(data);
+      }
+    } catch (e) {
+      alert(e);
+    } finally {
+      setIsLoading(false);
+    }
+  }
 
   const deletePost = (postId) => {
     fetch(`http://localhost:3000/posts/${postId}`, {
@@ -29,7 +35,7 @@ function Posts() {
       .then((response) => {
         if (response.ok) {
           console.log("Resource deleted successfully.");
-          fetchPosts(user.id);
+          showPosts(user.id);
         } else {
           console.error("Failed to delete resource.");
         }
@@ -40,7 +46,7 @@ function Posts() {
   };
 
   useEffect(() => {
-    fetchPosts(user.id);
+    showPosts(user.id);
   }, [user.id]);
 
   function toggleComments(userid) {
@@ -49,6 +55,10 @@ function Posts() {
     } else {
       setActivePostId(userid);
     }
+  }
+
+  if (isLoading) {
+    return <h1>Loading...</h1>;
   }
 
   return (
@@ -68,7 +78,7 @@ function Posts() {
           <AddNewPost
             userid={user.id}
             onPostAdded={() => {
-              fetchPosts(user.id);
+              showPosts(user.id);
               setShowAddPostForm(false);
             }}
             onCancel={() => setShowAddPostForm(false)}

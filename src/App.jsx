@@ -10,6 +10,7 @@ import Posts from "./pages/Posts";
 import Albums from "./pages/Albums";
 import ToDos from "./pages/Todos";
 import Home from "./pages/Home";
+import ErrorPage from "./pages/ErrorPage";
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
             </Route>
             <Route path="/todos" element={<ToDos />} />
           </Route>
+          <Route path="*" element={<ErrorPage />} />
         </Routes>
       </BrowserRouter>
     </>
