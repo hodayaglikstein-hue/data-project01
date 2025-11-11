@@ -2,7 +2,6 @@ import { useState } from "react";
 
 function AddNewItem(props) {
   const [newItem, setNewItem] = useState("");
-  console.log(props.lastId);
   function handleSubmit(e) {
     e.preventDefault();
     addItem();
@@ -10,8 +9,6 @@ function AddNewItem(props) {
   }
 
   async function addItem() {
-    console.log(props.userId);
-    console.log(`http://localhost:3000/todos/${props.userId}`);
     try {
       const res = await fetch(`http://localhost:3000/todos`, {
         method: "POST",
