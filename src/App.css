@@ -63,3 +63,16 @@
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1); /* shadow-md */
   transition: box-shadow 300ms; /* transition-shadow duration-300 */
 }
+.allAlbums {
+  padding: 1rem;
+  text-align: left;
+  background-color: #fac5e2; /* Light Pink Background */
+  border: 1px solid #df7fb5;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 300ms;
+
+  display: grid; 
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+  gap: 1.5rem; 
+}

@@ -21,8 +21,7 @@ function Comments({ postId }) {
   }, [postId]);
 
   const deleteComment = (commentID) => {
-    console.log(commentID);
-    fetch(`http://localhost:3000/comments?id=${commentID}`, {
+    fetch(`http://localhost:3000/comments/${commentID}`, {
       method: "DELETE",
     })
       .then((response) => {
@@ -48,7 +47,6 @@ function Comments({ postId }) {
             <h2>{comment.id}</h2>
             <button
               onClick={() => {
-                console.log(comment.id);
                 deleteComment(comment.id);
               }}
             >

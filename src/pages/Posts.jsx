@@ -5,7 +5,9 @@ function Posts() {
   //   const [postsComments, setPostsComments] = useState([]);
   const [activePostId, setActivePostId] = useState(null);
   useEffect(() => {
-    fetch(`http://localhost:3000/posts`)
+    const user = JSON.parse(localStorage.getItem("currentUser"));
+
+    fetch(`http://localhost:3000/posts/?userId=${user.id}`)
       .then((response) => response.json())
       .then((data) => setPosts(data));
   }, []);
@@ -21,7 +23,9 @@ function Posts() {
   return (
     <>
       <div>
-        <h1>My posts</h1>
+        <h1>
+          {JSON.parse(localStorage.getItem("currentUser")).username}'s posts
+        </h1>
 
         {posts.map((post) => {
           const isCommentsOpen = activePostId === post.id;
