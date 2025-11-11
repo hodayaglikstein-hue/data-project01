@@ -1,9 +1,12 @@
 import { useState, useEffect } from "react";
 import AddNewComment from "../components/AddComment";
+import { useNavigate } from "react-router";
 function Comments({ postId }) {
   const [Comments, setComments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [showAddCommentForm, setShowAddCommentForm] = useState(false);
+  const navigate = useNavigate();
+  const user = JSON.parse(localStorage.getItem("currentUser"));
 
   const fetchComments = () => {
     setIsLoading(true);
@@ -43,6 +46,7 @@ function Comments({ postId }) {
       <button
         onClick={() => {
           setShowAddCommentForm(true);
+          navigate(`/posts/${user.id}/comments/${postId}/new`);
         }}
       >
         add comment
@@ -54,7 +58,10 @@ function Comments({ postId }) {
             fetchComments();
             setShowAddCommentForm(false);
           }}
-          onCancel={() => setShowAddCommentForm(false)}
+          onCancel={() => {
+            setShowAddCommentForm(false);
+            navigate(`/posts/${user.id}/comments/${postId}`);
+          }}
         />
       )}
 

@@ -44,7 +44,7 @@ function Posts() {
                   if (isCommentsOpen) {
                     navigate(`/posts/${user.id}`);
                   } else {
-                    navigate(`/posts/${user.id}/comments`);
+                    navigate(`/posts/${user.id}/comments/${post.id}`);
                   }
                 }}
               >

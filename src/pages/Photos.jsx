@@ -13,14 +13,23 @@ function Photos({ albumId }) {
   return (
     <div>
       <h1>album number: {albumId}</h1>
-      {photos.map((photo) => {
-        return (
-          <div className="allPhotos" key={photo.id}>
-            <h4>{photo.title} </h4>
-            <img src={photo.url} alt="photo" width="50" height="60" />
-          </div>
-        );
-      })}
+      <button>New Photo</button>
+      <div id="photo-container">
+        {photos.map((photo) => {
+          return (
+            <div className="allPhotos" key={photo.id}>
+              <div>
+                <img src={photo.url} alt="photo" width="50" height="60" />
+              </div>
+              <div>
+                <h4>{photo.title} </h4>
+                <button>Delete</button>
+                <button>Update</button>
+              </div>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }

@@ -17,7 +17,7 @@ function Albums() {
 
   const handleAlbumClick = (albumId) => {
     setActiveAlbumsId(albumId);
-    navigate(`/albums/${user.id}/${albumId}`);
+    navigate(`/albums/${user.id}/photos/${albumId}`);
   };
   const handleBackToAlbums = () => {
     setActiveAlbumsId(null);
@@ -29,6 +29,7 @@ function Albums() {
       <h1>
         {JSON.parse(localStorage.getItem("currentUser")).username}'s albums
       </h1>
+      {!activeAlbumsId && <button>New Album</button>}
       {activeAlbumsId ? (
         <>
           <button
@@ -41,22 +42,24 @@ function Albums() {
           <Photos albumId={activeAlbumsId} />
         </>
       ) : (
-        albums.map((album) => {
-          return (
-            <div className="allAlbums" key={album.id}>
-              <h2>{album.title} </h2>
-              <h2>{album.id}</h2>
-              <button
-                onClick={() => {
-                  console.log("it was clicked");
-                  handleAlbumClick(album.id);
-                }}
-              >
-                see photos
-              </button>
-            </div>
-          );
-        })
+        <div id="albums-container">
+          {albums.map((album) => {
+            return (
+              <div className="allAlbums" key={album.id}>
+                <h2>{album.title} </h2>
+                <h2>{album.id}</h2>
+                <button
+                  onClick={() => {
+                    console.log("it was clicked");
+                    handleAlbumClick(album.id);
+                  }}
+                >
+                  see photos
+                </button>
+              </div>
+            );
+          })}
+        </div>
       )}
     </div>
   );
