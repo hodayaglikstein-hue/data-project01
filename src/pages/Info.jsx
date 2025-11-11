@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useEffect } from "react";
+import { useNavigate } from "react-router";
 
 function Info() {
   const [user, setUser] = useState({
@@ -12,6 +13,8 @@ function Info() {
   const username =
     JSON.parse(localStorage.getItem("currentUser")).username || "";
 
+  const navigate = useNavigate();
+
   useEffect(() => {
     setIsLoading(true);
     async function getUser() {
@@ -22,7 +25,6 @@ function Info() {
         if (!res.ok) throw new Error("Something is wrong...");
         const data = await res.json();
         setUser(data[0]);
-        console.log(data[0]);
         setIsLoading(false);
       } catch (err) {
         alert(err);
@@ -42,6 +44,8 @@ function Info() {
       <h2>Username: {user.username}</h2>
       <h2>Email: {user.email}</h2>
       <h2>Phone: {user.phone}</h2>
+
+      <button onClick={() => navigate("/updateuser")}>Update</button>
     </>
   );
 }
