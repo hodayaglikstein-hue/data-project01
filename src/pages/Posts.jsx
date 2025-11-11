@@ -1,12 +1,16 @@
 import { useState, useEffect } from "react";
 import Comments from "../components/Comments";
+import { useNavigate } from "react-router";
 function Posts() {
   const [posts, setPosts] = useState([]);
+  const navigate = useNavigate();
   //   const [postsComments, setPostsComments] = useState([]);
   const [activePostId, setActivePostId] = useState(null);
+  const user = JSON.parse(localStorage.getItem("currentUser"));
+
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("currentUser"));
-
+    navigate(`/posts/${user.id}`);
     fetch(`http://localhost:3000/posts/?userId=${user.id}`)
       .then((response) => response.json())
       .then((data) => setPosts(data));
@@ -37,6 +41,11 @@ function Posts() {
               <button
                 onClick={() => {
                   toggleComments(post.id);
+                  if (isCommentsOpen) {
+                    navigate(`/posts/${user.id}`);
+                  } else {
+                    navigate(`/posts/${user.id}/comments`);
+                  }
                 }}
               >
                 comments

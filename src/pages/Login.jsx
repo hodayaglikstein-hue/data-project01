@@ -39,7 +39,7 @@ function Login() {
           localStorage.setItem("currentUser", JSON.stringify(user[0]));
           setUsernameValue("");
           setPasswordValue("");
-          navigate("/info");
+          navigate("/home");
         } else {
           throw Error("Something is worng...");
         }

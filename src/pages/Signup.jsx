@@ -72,8 +72,7 @@ function Signup() {
         setPasswordValue("");
         setConfirmPasswordValue("");
         localStorage.setItem("currentUser", JSON.stringify(await res.json()));
-        alert("success!");
-        navigate("/info");
+        navigate("/home");
       }
     } catch (e) {
       alert(e);

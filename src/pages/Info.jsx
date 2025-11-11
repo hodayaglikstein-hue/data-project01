@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useEffect } from "react";
-import { useNavigate } from "react-router";
+import { Outlet, useNavigate } from "react-router";
 
 function Info() {
   const [user, setUser] = useState({
@@ -10,6 +10,7 @@ function Info() {
     phone: "",
   });
   const [isLoading, setIsLoading] = useState(true);
+  //   const [showUpdate, setShowUpdate] = useState(false);
   const username =
     JSON.parse(localStorage.getItem("currentUser")).username || "";
 
@@ -40,12 +41,14 @@ function Info() {
     <>
       <h1>{username}'s Info page</h1>
 
+      <Outlet />
+
       <h2>Name: {user.name}</h2>
       <h2>Username: {user.username}</h2>
       <h2>Email: {user.email}</h2>
       <h2>Phone: {user.phone}</h2>
 
-      <button onClick={() => navigate("/updateuser")}>Update</button>
+      <button onClick={() => navigate("updateuser")}>Update</button>
     </>
   );
 }

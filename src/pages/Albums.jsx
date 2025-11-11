@@ -1,12 +1,15 @@
 import { useState, useEffect } from "react";
 import Photos from "./Photos";
+import { useNavigate } from "react-router";
 function Albums() {
   const [albums, setAlbums] = useState([]);
   const [activeAlbumsId, setActiveAlbumsId] = useState(null);
+  const navigate = useNavigate();
+  const user = JSON.parse(localStorage.getItem("currentUser"));
 
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("currentUser"));
-
+    navigate(`/albums/${user.id}`);
     fetch(`http://localhost:3000/albums/?userId=${user.id}`)
       .then((response) => response.json())
       .then((data) => setAlbums(data));
@@ -14,9 +17,11 @@ function Albums() {
 
   const handleAlbumClick = (albumId) => {
     setActiveAlbumsId(albumId);
+    navigate(`/albums/${user.id}/${albumId}`);
   };
   const handleBackToAlbums = () => {
     setActiveAlbumsId(null);
+    navigate(`/albums/${user.id}`);
   };
 
   return (

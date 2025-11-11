@@ -23,10 +23,15 @@ function App() {
           <Route path="/logout" element={<Logout />} />
           <Route element={<MainLayout />}>
             <Route path="/home" element={<Home />} />
-            <Route path="/updateuser" element={<UpdateUser />} />
-            <Route path="/info" element={<Info />} />
-            <Route path="/posts" element={<Posts />} />
-            <Route path="/albums" element={<Albums />} />
+            <Route path="/info" element={<Info />}>
+              <Route path="updateuser" element={<UpdateUser />} />
+            </Route>
+            <Route path="/posts" element={<Posts />}>
+              <Route path=":userId/*" />
+            </Route>
+            <Route path="/albums" element={<Albums />}>
+              <Route path=":userId/*" />
+            </Route>
             <Route path="/todos" element={<ToDos />} />
           </Route>
         </Routes>

@@ -1,7 +1,8 @@
 function Home() {
+  const username = JSON.parse(localStorage.getItem("currentUser")).username;
   return (
     <>
-      <h1>Home Page</h1>
+      <h1>Hello {username}!</h1>
     </>
   );
 }
