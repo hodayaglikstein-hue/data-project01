@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
-
+import AddNewComment from "../components/AddComment";
 function Comments({ postId }) {
   const [Comments, setComments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [showAddCommentForm, setShowAddCommentForm] = useState(false);
 
   const fetchComments = () => {
     setIsLoading(true);
@@ -36,15 +37,33 @@ function Comments({ postId }) {
         console.error("Network or other error:", error);
       });
   };
+
   return (
     <div>
+      <button
+        onClick={() => {
+          setShowAddCommentForm(true);
+        }}
+      >
+        add comment
+      </button>
+      {showAddCommentForm && (
+        <AddNewComment
+          postId={postId}
+          onCommentAdded={() => {
+            fetchComments();
+            setShowAddCommentForm(false);
+          }}
+          onCancel={() => setShowAddCommentForm(false)}
+        />
+      )}
+
       {Comments.map((comment) => {
         return (
           <div className="allComments" key={comment.id}>
             <h2>{comment.name} </h2>
             <h4>{comment.email}</h4>
             <h5>{comment.body}</h5>
-            <h2>{comment.id}</h2>
             <button
               onClick={() => {
                 deleteComment(comment.id);
