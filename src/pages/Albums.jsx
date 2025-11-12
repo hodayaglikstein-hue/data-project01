@@ -8,6 +8,7 @@ function Albums() {
   const [activeAlbumsId, setActiveAlbumsId] = useState(null);
   const [showAddAlbumForm, setShowAddAlbumForm] = useState(false);
   const [showAlbumUpdate, setShowAlbumUpdate] = useState(null);
+  const [searchItem, setSearchItem] = useState("");
 
   const navigate = useNavigate();
   const user = JSON.parse(localStorage.getItem("currentUser"));
@@ -62,11 +63,26 @@ function Albums() {
     navigate(`/albums/${user.id}/photos/new`);
   };
 
+  const filteredAlbums = albums.filter((todo) =>
+    todo.title.toLowerCase().includes(searchItem.toLocaleLowerCase())
+  );
+
   return (
     <div>
       <h1>
         {JSON.parse(localStorage.getItem("currentUser")).username}'s albums
       </h1>
+      <div className="search-bar">
+        <label htmlFor="search-input">search items:</label>
+        <input
+          id="search-input"
+          type="text"
+          placeholder="search..."
+          value={searchItem}
+          onChange={(e) => setSearchItem(e.target.value)}
+        />
+      </div>
+
       {!activeAlbumsId && (
         <>
           <button onClick={handleShowAddAlbumForm}>New Album</button>
@@ -101,7 +117,7 @@ function Albums() {
         </>
       ) : (
         <div id="albums-container">
-          {albums.map((album) => {
+          {filteredAlbums.map((album) => {
             return (
               <div className="allAlbums" key={album.id}>
                 <h2>{album.title} </h2>
