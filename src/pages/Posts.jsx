@@ -8,6 +8,7 @@ function Posts() {
   const [isLoading, setIsLoading] = useState(true);
   const [activePostId, setActivePostId] = useState(null);
   const [showAddPostForm, setShowAddPostForm] = useState(false);
+  const [searchItem, setSearchItem] = useState("");
 
   const user = JSON.parse(localStorage.getItem("currentUser"));
 
@@ -61,12 +62,27 @@ function Posts() {
     return <h1>Loading...</h1>;
   }
 
+  const filteredPosts = posts.filter((todo) =>
+    todo.title.toLowerCase().includes(searchItem.toLocaleLowerCase())
+  );
+
   return (
     <>
       <div>
         <h1>
           {JSON.parse(localStorage.getItem("currentUser")).username}'s posts
         </h1>
+        <div className="search-bar">
+          <label htmlFor="search-input">search items:</label>
+          <input
+            id="search-input"
+            type="text"
+            placeholder="search..."
+            value={searchItem}
+            onChange={(e) => setSearchItem(e.target.value)}
+          />
+        </div>
+
         <button
           onClick={() => {
             setShowAddPostForm(true);
@@ -85,7 +101,7 @@ function Posts() {
           />
         )}
 
-        {posts.map((post) => {
+        {filteredPosts.map((post) => {
           const isCommentsOpen = activePostId === post.id;
           return (
             <div className="allPosts" key={post.id}>
