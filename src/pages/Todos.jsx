@@ -1,18 +1,33 @@
 import { useState, useEffect } from "react";
 import AddNewItem from "../components/AddNewItem";
+import { useNavigate } from "react-router";
 
 function ToDos() {
   const [list, setList] = useState([]);
   const [sortKey, setSortKey] = useState("default");
   const [searchItem, setSearchItem] = useState("");
-
-  const userId = JSON.parse(localStorage.getItem("currentUser")).id;
-  const username = JSON.parse(localStorage.getItem("currentUser")).username;
+  const navigate = useNavigate();
+  const currentUser = localStorage.getItem("currentUser");
   useEffect(() => {
+    if (!currentUser) {
+      navigate("/login");
+    }
     showList();
-  }, [userId]);
+  }, []);
 
   async function showList() {
+    try {
+      const res = await fetch(`http://localhost:3000/todos/?userId=${userId}`);
+      if (!res.ok) {
+        throw Error("Something went wrong");
+      } else {
+        const data = await res.json();
+        setList(data);
+      }
+    } catch (e) {
+      alert(e);
+    }
+
     fetch(`http://localhost:3000/todos/?userId=${userId}`)
       .then((response) => response.json())
       .then((data) => setList(data));
@@ -76,6 +91,13 @@ function ToDos() {
   const filteredList = sortedList.filter((todo) =>
     todo.title.toLowerCase().includes(searchItem.toLocaleLowerCase())
   );
+
+  let userId = "";
+  let username;
+  if (localStorage.getItem("currentUser")) {
+    userId = JSON.parse(localStorage.getItem("currentUser")).id;
+    username = JSON.parse(localStorage.getItem("currentUser")).username;
+  }
 
   return (
     <>

@@ -2,29 +2,44 @@ import { NavLink } from "react-router";
 
 function NavBar() {
   return (
-    <>
-      <div id="nav-container">
-        <div className="link">
-          <NavLink to={"/home"}>Home</NavLink>
-        </div>
-        <div className="link">
-          <NavLink to={"/info"}>Info</NavLink>
-        </div>
-        <div className="link">
-          <NavLink to={"/posts"}>Posts</NavLink>
-        </div>
-        <div className="link">
-          <NavLink to={"/todos"}>ToDos</NavLink>
-        </div>
-        <div className="link">
-          <NavLink to={"/albums"}>Albums</NavLink>
-        </div>
-        <div className="link">
-          <NavLink to={"/logout"}>Logout</NavLink>
-        </div>
-      </div>
-    </>
+    <div id="nav-container">
+      <NavLink
+        to="/home"
+        className={({ isActive }) => (isActive ? "active-link" : "link")}
+      >
+        Home
+      </NavLink>
+      <NavLink
+        to="/info"
+        className={({ isActive }) => (isActive ? "active-link" : "link")}
+      >
+        Info
+      </NavLink>
+      <NavLink
+        to="/posts"
+        className={({ isActive }) => (isActive ? "active-link" : "link")}
+      >
+        Posts
+      </NavLink>
+      <NavLink
+        to="/todos"
+        className={({ isActive }) => (isActive ? "active-link" : "link")}
+      >
+        ToDos
+      </NavLink>
+      <NavLink
+        to="/albums"
+        className={({ isActive }) => (isActive ? "active-link" : "link")}
+      >
+        Albums
+      </NavLink>
+      <NavLink
+        to="/logout"
+        className={({ isActive }) => (isActive ? "active-link" : "link")}
+      >
+        Logout
+      </NavLink>
+    </div>
   );
 }
-
 export default NavBar;

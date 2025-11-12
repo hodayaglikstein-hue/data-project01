@@ -12,7 +12,7 @@
 }
 
 /* Base button style (applies to all buttons unless overridden) */
-button { 
+button {
   padding: 8px 16px;
   border-radius: 9999px; /* Pill shape for cuteness */
   cursor: pointer;
@@ -48,7 +48,7 @@ button:hover {
   gap: 15px;
 }
 .link {
-  border: none; 
+  border: none;
   border-radius: 9999px; /* Pill shape */
   background-color: #eee;
   padding: 10px 20px;
@@ -59,8 +59,20 @@ button:hover {
   transition: background-color 200ms;
 }
 .link:hover {
-    background-color: #df7fb5;
-    color: white;
+  background-color: #df7fb5;
+  color: white;
+}
+
+.active-link {
+  background-color: #df7fb5;
+  color: white;
+  border: none;
+  border-radius: 9999px; /* Pill shape */
+  padding: 10px 20px;
+  width: auto;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 200ms;
 }
 
 /* ==================================================================== */
@@ -69,37 +81,36 @@ button:hover {
 
 /* --- POSTS CONTAINER --- */
 .allPosts {
-  padding: 1.5rem; 
+  padding: 1.5rem;
   text-align: left;
   background-color: #fac5e2; /* The main pink color */
-  border: 1px solid #df7fb5; 
+  border: 1px solid #df7fb5;
   border-radius: 1rem; /* Softer corners */
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05); /* Soft, diffused shadow */
-  transition: all 300ms ease-out; 
+  transition: all 300ms ease-out;
   margin-bottom: 20px; /* Space between post cards */
 }
 .allPosts:hover {
-  box-shadow: 0 12px 20px -5px rgba(0, 0, 0, 0.1); 
+  box-shadow: 0 12px 20px -5px rgba(0, 0, 0, 0.1);
   transform: translateY(-2px); /* Subtle lift effect */
 }
 
 /* --- COMMENTS CONTAINER (Nested inside Posts) --- */
 .allComments {
-  padding: 1.2rem; 
+  padding: 1.2rem;
   text-align: left;
   background-color: #fddbee; /* Lighter pink for nested content */
-  border: 1px solid #eeb8d7; 
+  border: 1px solid #eeb8d7;
   border-radius: 0.75rem; /* Slightly smaller border radius than posts */
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
   transition: box-shadow 300ms;
   margin-bottom: 10px; /* Space between comments */
 }
 /* Ensure the ID numbers are not huge (as seen in the screenshots) */
-.allComments h2:last-of-type { 
-    font-size: 0.9rem;
-    color: #999;
+.allComments h2:last-of-type {
+  font-size: 0.9rem;
+  color: #999;
 }
-
 
 /* --- TODOS LIST --- */
 #todos-container {
@@ -110,10 +121,10 @@ button:hover {
   gap: 10px;
 }
 #todos-container div {
-  border: 1px solid #f9cce9; 
+  border: 1px solid #f9cce9;
   background-color: #fddbee;
   padding: 1rem;
-  border-radius: 0.75rem; 
+  border-radius: 0.75rem;
 }
 #todos-text-container {
   display: flex;
@@ -138,7 +149,8 @@ button:hover {
 /* Note: The old .allAlbums styling you provided seems to be for the *individual* item,
    but its properties (display: grid) suggest it might be the *container*. 
    I've restructured this logic below for clarity. */
-.albums-grid-wrapper { /* Recommend using a wrapper class here */
+.albums-grid-wrapper {
+  /* Recommend using a wrapper class here */
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 1.5rem;
@@ -149,29 +161,29 @@ button:hover {
 .allPhotos,
 .allAlbums {
   /* This style applies to the individual clickable album/photo boxes */
-  width: 250px; 
+  width: 250px;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
   padding: 15px;
-  border-radius: 1rem; 
+  border-radius: 1rem;
   background-color: #fff;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08); 
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
   transition: transform 200ms ease-out;
   border: 1px solid #f9cce9;
 }
 .allPhotos:hover,
 .allAlbums:hover {
-    transform: translateY(-3px);
+  transform: translateY(-3px);
 }
 
 .allPhotos img {
   width: 200px;
   height: 200px;
-  border-radius: 10px; 
+  border-radius: 10px;
   margin-bottom: 10px;
-  border: 3px solid #f9cce9; 
+  border: 3px solid #f9cce9;
   object-fit: cover;
 }
 
