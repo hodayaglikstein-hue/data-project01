@@ -4,6 +4,7 @@ import AddNewItem from "../components/AddNewItem";
 function ToDos() {
   const [list, setList] = useState([]);
   const [sortKey, setSortKey] = useState("default");
+  const [searchItem, setSearchItem] = useState("");
 
   const userId = JSON.parse(localStorage.getItem("currentUser")).id;
   const username = JSON.parse(localStorage.getItem("currentUser")).username;
@@ -72,9 +73,25 @@ function ToDos() {
     });
   }
 
+  const filteredList = sortedList.filter((todo) =>
+    todo.title.toLowerCase().includes(searchItem.toLocaleLowerCase())
+  );
+
   return (
     <>
       <h1>{username}'s To-Do List</h1>
+      {/*search input field */}
+      <div className="search-bar">
+        <label htmlFor="search-input">search items:</label>
+        <input
+          id="search-input"
+          type="text"
+          placeholder="search..."
+          value={searchItem}
+          onChange={(e) => setSearchItem(e.target.value)}
+        />
+      </div>
+
       {/* SORT CONTROLS */}
       <div className="sort-controls" style={{ marginBottom: "20px" }}>
         <button
@@ -98,7 +115,7 @@ function ToDos() {
       </div>
       <AddNewItem userId={userId} showList={showList} />
       <div id="todos-container">
-        {sortedList.map((todo) => (
+        {filteredList.map((todo) => (
           <div key={todo.id} id="todos-text-container">
             <span className={todo.completed ? "completed" : ""}>
               {todo.title}
