@@ -14,7 +14,7 @@ function Posts() {
   async function showPosts(userid) {
     setIsLoading(true);
     try {
-      const res = await fetch(`http://localhost:3000/posts?userid=${userid}`);
+      const res = await fetch(`http://localhost:3000/posts?userId=${userid}`);
       if (!res.ok) {
         throw Error("Something went wrong!");
       } else {

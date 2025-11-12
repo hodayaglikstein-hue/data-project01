@@ -2,10 +2,12 @@ import { useState, useEffect } from "react";
 import Photos from "./Photos";
 import { useNavigate } from "react-router";
 import AddAlbum from "../components/AddAlbum";
+import UpdateAlbum from "../components/UpdateAlbum";
 function Albums() {
   const [albums, setAlbums] = useState([]);
   const [activeAlbumsId, setActiveAlbumsId] = useState(null);
   const [showAddAlbumForm, setShowAddAlbumForm] = useState(false);
+  const [showAlbumUpdate, setShowAlbumUpdate] = useState(null);
 
   const navigate = useNavigate();
   const user = JSON.parse(localStorage.getItem("currentUser"));
@@ -118,6 +120,22 @@ function Albums() {
                 >
                   Delete Album
                 </button>
+                <button
+                  onClick={() => {
+                    setShowAlbumUpdate(album.id);
+                    navigate(`/albums/${album.id}/update/`);
+                  }}
+                >
+                  Update
+                </button>
+                {showAlbumUpdate === album.id && (
+                  <UpdateAlbum
+                    albumTitle={album.title}
+                    albumId={album.id}
+                    showAlbums={showAlbums}
+                    setShowAlbumUpdate={setShowAlbumUpdate}
+                  />
+                )}
               </div>
             );
           })}

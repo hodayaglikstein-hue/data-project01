@@ -599,6 +599,12 @@
       "id": "100",
       "title": "at nam consequatur ea labore ea harum",
       "body": "cupiditate quo est a modi nesciunt soluta\nipsa voluptas error itaque dicta in\nautem qui minus magnam et distinctio eum\naccusamus ratione error aut"
+    },
+    {
+      "id": "719f",
+      "userId": "1",
+      "title": "newPost",
+      "body": "blablabla"
     }
   ],
   "comments": [
@@ -4106,7 +4112,7 @@
     {
       "userId": 1,
       "id": "1",
-      "title": "quidem molestiae enim"
+      "title": "Dont Delete"
     },
     {
       "userId": 1,
@@ -4603,7 +4609,7 @@
     {
       "albumId": 1,
       "id": "1",
-      "title": "accusamus beatae ad facilis cum similique qui sunt",
+      "title": "red",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Solid_red.svg/512px-Solid_red.svg.png?20150316143248",
       "thumbnailUrl": "https://via.placeholder.com/150/92c952"
     },

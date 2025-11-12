@@ -10,13 +10,19 @@ function Info() {
     phone: "",
   });
   const [isLoading, setIsLoading] = useState(true);
-  //   const [showUpdate, setShowUpdate] = useState(false);
-  const username =
-    JSON.parse(localStorage.getItem("currentUser")).username || "";
-
+  //   const username =
+  //     JSON.parse(localStorage.getItem("currentUser")).username || "";
   const navigate = useNavigate();
+  const currentUser = localStorage.getItem("currentUser");
 
   useEffect(() => {
+    if (!currentUser) {
+      navigate("/login");
+    }
+    let username = "";
+    if (localStorage.getItem("currentUser")) {
+      username = JSON.parse(localStorage.getItem("currentUser")).username || "";
+    }
     setIsLoading(true);
     async function getUser() {
       try {
@@ -32,7 +38,11 @@ function Info() {
       }
     }
     getUser();
-  }, [username]);
+  }, []);
+  let username = "";
+  if (localStorage.getItem("currentUser")) {
+    username = JSON.parse(localStorage.getItem("currentUser")).username || "";
+  }
 
   if (isLoading) {
     return <p>Loading...</p>;

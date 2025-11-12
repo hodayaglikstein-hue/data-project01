@@ -3,19 +3,19 @@ import AddNewComment from "../components/AddComment";
 import { useNavigate } from "react-router";
 function Comments({ postId }) {
   const [Comments, setComments] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  // const [isLoading, setIsLoading] = useState(true);
   const [showAddCommentForm, setShowAddCommentForm] = useState(false);
   const navigate = useNavigate();
   const user = JSON.parse(localStorage.getItem("currentUser"));
 
   const fetchComments = () => {
-    setIsLoading(true);
+    // setIsLoading(true);
     fetch(`http://localhost:3000/comments?postId=${postId}`)
       .then((response) => response.json())
       .then((data) => setComments(data))
       .catch((err) => {
         console.error("Failed to fetch comments:", err);
-        setIsLoading(false);
+        // setIsLoading(false);
       });
   };
   useEffect(() => {
@@ -41,9 +41,9 @@ function Comments({ postId }) {
       });
   };
 
-  if (isLoading) {
-    return <h1>Loading...</h1>;
-  }
+  // if (isLoading) {
+  //   return <h1>Loading...</h1>;
+  // }
 
   return (
     <div>
