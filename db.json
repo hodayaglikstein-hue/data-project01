@@ -4736,7 +4736,7 @@
     {
       "albumId": 1,
       "id": "20",
-      "title": "assumenda voluptatem laboriosam enim consequatur veniam placeat reiciendis error",
+      "title": "fggfdgdfgd",
       "url": "https://www.juniperpaints.com/cdn/shop/products/0B412E_800x.png?v=1637618648",
       "thumbnailUrl": "https://via.placeholder.com/150/8985dc"
     }
@@ -4746,13 +4746,13 @@
       "userId": 1,
       "id": "2",
       "title": "quis ut nam facilis et officia qui",
-      "completed": true
+      "completed": false
     },
     {
       "userId": 1,
       "id": "3",
       "title": "fugiat veniam minus",
-      "completed": true
+      "completed": false
     },
     {
       "userId": 1,
@@ -4812,7 +4812,7 @@
       "userId": 1,
       "id": "13",
       "title": "et doloremque nulla",
-      "completed": false
+      "completed": true
     },
     {
       "userId": 1,
@@ -4842,7 +4842,7 @@
       "userId": 1,
       "id": "18",
       "title": "dolorum est consequatur ea mollitia in culpa",
-      "completed": false
+      "completed": true
     },
     {
       "userId": 1,
@@ -5940,7 +5940,7 @@
   "users": [
     {
       "id": "1",
-      "name": "Bob1",
+      "name": "Bob",
       "username": "Bret",
       "email": "Sincere@april.biz",
       "phone": "1-770-736-8031 x56442",
