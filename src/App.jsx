@@ -25,7 +25,7 @@ function App() {
           <Route element={<MainLayout />}>
             <Route path="/home" element={<Home />} />
             <Route path="/info" element={<Info />}>
-              <Route path="updateuser" element={<UpdateUser />} />
+              <Route path=":userId/*" element={<UpdateUser />} />
             </Route>
             <Route path="/posts" element={<Posts />}>
               <Route path=":userId/*" />

@@ -58,7 +58,13 @@ function Info() {
       <h2>Email: {user.email}</h2>
       <h2>Phone: {user.phone}</h2>
 
-      <button onClick={() => navigate("updateuser")}>Update</button>
+      <button
+        onClick={() => {
+          navigate("updateuser");
+        }}
+      >
+        Update
+      </button>
     </>
   );
 }

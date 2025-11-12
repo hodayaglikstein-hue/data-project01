@@ -37,6 +37,7 @@ function UpdateUser() {
           type="text"
           value={updateName}
           onChange={(e) => setUpdateName(e.target.value)}
+          required
         ></input>
         <label htmlFor="email">Email</label>
         <input
@@ -44,6 +45,7 @@ function UpdateUser() {
           type="email"
           value={updateEmail}
           onChange={(e) => setUpdateEmail(e.target.value)}
+          required
         ></input>
         <label htmlFor="phone">Phone</label>
         <input
@@ -51,6 +53,7 @@ function UpdateUser() {
           type="tel"
           value={updatePhone}
           onChange={(e) => setUpdatePhone(e.target.value)}
+          required
         ></input>
         <input type="submit" value="Done" />
       </form>

@@ -14,7 +14,7 @@ function Albums() {
   const user = JSON.parse(localStorage.getItem("currentUser"));
 
   useEffect(() => {
-    navigate(`/albums/${user.id}`);
+    navigate(`/albums`);
     showAlbums();
   }, []);
 
@@ -36,11 +36,11 @@ function Albums() {
 
   const handleAlbumClick = (albumId) => {
     setActiveAlbumsId(albumId);
-    navigate(`/albums/${user.id}/photos/${albumId}`);
+    navigate(`/albums/${user.id}/photos`);
   };
   const handleBackToAlbums = () => {
     setActiveAlbumsId(null);
-    navigate(`/albums/${user.id}`);
+    navigate(`/albums/`);
   };
 
   async function deleteAlbum(albumId) {
@@ -60,7 +60,7 @@ function Albums() {
 
   const handleShowAddAlbumForm = () => {
     setShowAddAlbumForm(true);
-    navigate(`/albums/${user.id}/photos/new`);
+    navigate(`/albums/${user.id}/new`);
   };
 
   const filteredAlbums = albums.filter((todo) =>
@@ -93,11 +93,11 @@ function Albums() {
               onAlbumAdded={() => {
                 showAlbums();
                 setShowAddAlbumForm(false);
-                navigate(`/albums/${user.id}`);
+                navigate(`/albums/${user.id}/new`);
               }}
               onCancel={() => {
                 setShowAddAlbumForm(false);
-                navigate(`/albums/${user.id}`);
+                navigate(`/albums`);
               }}
             />
           )}

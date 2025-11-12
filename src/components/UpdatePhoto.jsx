@@ -53,6 +53,7 @@ function UpdatePhoto(props) {
           type="text"
           value={updateURL}
           onChange={(e) => setUpdateURL(e.target.value)}
+          required
         ></input>
         <input type="submit" value="Done" />
       </form>

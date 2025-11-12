@@ -36,7 +36,16 @@ function Login() {
         const user = await res.json();
         console.log(user[0]);
         if (user[0].username === username && user[0].website === password) {
-          localStorage.setItem("currentUser", JSON.stringify(user[0]));
+          localStorage.setItem(
+            "currentUser",
+            JSON.stringify({
+              email: user[0].email,
+              id: user[0].id,
+              name: user[0].name,
+              phone: user[0].phone,
+              username: user[0].username,
+            })
+          );
           setUsernameValue("");
           setPasswordValue("");
           navigate("/home");

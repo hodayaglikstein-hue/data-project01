@@ -51,7 +51,7 @@ function Photos({ albumId }) {
       <button
         onClick={() => {
           setShowAddPhotoForm(true);
-          navigate(`/albums/${user.id}/photos/${albumId}/new`);
+          navigate(`/albums/${albumId}/photos/new`);
         }}
       >
         add photo
@@ -62,11 +62,11 @@ function Photos({ albumId }) {
           onPhotoAdded={() => {
             showPhotos();
             setShowAddPhotoForm(false);
-            navigate(`/albums/${user.id}/photos/${albumId}/new`);
+            navigate(`/albums/${albumId}/photos/new`);
           }}
           onCancel={() => {
             setShowAddPhotoForm(false);
-            navigate(`/albums/${user.id}/photos/${albumId}`);
+            navigate(`/albums/${albumId}/photos/`);
           }}
         />
       )}
